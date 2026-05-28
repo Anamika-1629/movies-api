@@ -1,4 +1,4 @@
-package dev.anamika.movies;
+package dev.anamika.movies.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
