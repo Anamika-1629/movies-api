@@ -1,7 +1,8 @@
-package dev.anamika.movies.repositories;
+package dev.anamika.movies.services;
 
 import dev.anamika.movies.models.Movies;
 import dev.anamika.movies.models.Reviews;
+import dev.anamika.movies.repositories.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;

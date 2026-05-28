@@ -1,6 +1,6 @@
 package dev.anamika.movies.controllers;
 
-import dev.anamika.movies.repositories.ReviewService;
+import dev.anamika.movies.services.ReviewService;
 import dev.anamika.movies.models.Reviews;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
