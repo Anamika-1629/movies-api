@@ -1,0 +1,103 @@
+/* src/components/MovieCard.css */
+.movie-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform var(--transition), box-shadow var(--transition);
+    border: 1px solid var(--border);
+    /* stagger animation handled via inline style in the grid */
+    animation: cardReveal 0.5s ease both;
+}
+
+@keyframes cardReveal {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.movie-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: var(--shadow-card), var(--shadow-glow);
+    border-color: rgba(229,9,20,0.3);
+}
+
+/* ── Poster wrap ── */
+.movie-card__poster-wrap {
+    position: relative;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+}
+
+.movie-card__poster {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.movie-card:hover .movie-card__poster {
+    transform: scale(1.06);
+}
+
+/* Hover overlay */
+.movie-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(229,9,20,0.75) 0%, transparent 60%);
+    opacity: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 1.5rem;
+    transition: opacity var(--transition);
+}
+
+.movie-card:hover .movie-card__overlay {
+    opacity: 1;
+}
+
+.movie-card__play-btn {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #fff;
+    background: rgba(0,0,0,0.5);
+    padding: 0.45rem 1rem;
+    border-radius: 2rem;
+    backdrop-filter: blur(4px);
+}
+
+/* ── Card footer ── */
+.movie-card__info {
+    padding: 0.9rem 1rem 1rem;
+}
+
+.movie-card__title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0.35rem;
+}
+
+.movie-card__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.movie-card__year {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.movie-card__genre {
+    font-size: 0.72rem;
+    padding: 0.18rem 0.55rem;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border-radius: 2rem;
+    border: 1px solid rgba(229,9,20,0.25);
+    font-weight: 500;
+}
