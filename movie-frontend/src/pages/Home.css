@@ -1,0 +1,191 @@
+/* src/pages/Home.css */
+
+/* ─── Hero ─────────────────────────────────────────────────────── */
+.home__hero {
+    position: relative;
+    min-height: 52vh;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 4rem;
+    overflow: hidden;
+}
+
+/* Animated gradient background — no image needed */
+.home__hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+            radial-gradient(ellipse 80% 60% at 50% 0%, rgba(229,9,20,0.18) 0%, transparent 70%),
+            radial-gradient(ellipse 60% 40% at 80% 20%, rgba(255,80,0,0.08) 0%, transparent 60%),
+            var(--bg-primary);
+    animation: heroPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes heroPulse {
+    from { opacity: 0.8; }
+    to   { opacity: 1; }
+}
+
+.home__hero-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding-top: 8rem; /* space for fixed navbar */
+}
+
+.home__hero-eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+}
+
+.home__hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 9vw, 7.5rem);
+    line-height: 0.95;
+    letter-spacing: 0.04em;
+    color: var(--text-primary);
+    /* subtle red shine on the text */
+    text-shadow: 0 0 80px rgba(229,9,20,0.35);
+}
+
+.home__hero-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    max-width: 460px;
+    line-height: 1.6;
+}
+
+/* ── Search ── */
+.home__search-wrap {
+    position: relative;
+    margin-top: 0.5rem;
+    width: 100%;
+    max-width: 420px;
+}
+
+.home__search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.home__search {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 2rem;
+    padding: 0.75rem 1.2rem 0.75rem 2.8rem;
+    color: var(--text-primary);
+    font-size: 0.92rem;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.home__search:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+.home__search::placeholder { color: var(--text-muted); }
+
+/* ─── Grid Section ──────────────────────────────────────────────── */
+.home__grid-section {
+    padding: 3rem 2rem 5rem;
+}
+
+.home__section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.home__section-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    letter-spacing: 0.06em;
+    color: var(--text-primary);
+}
+
+.home__count {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+/* Responsive grid — auto-fill cards */
+.home__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 1.4rem;
+}
+
+/* ── Loading skeletons ── */
+.home__skeleton {
+    aspect-ratio: 2 / 3;
+    background: linear-gradient(
+            90deg,
+            var(--bg-card) 25%,
+            var(--bg-card-hover) 50%,
+            var(--bg-card) 75%
+    );
+    background-size: 200% 100%;
+    border-radius: var(--radius-md);
+    animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+    from { background-position: 200% 0; }
+    to   { background-position: -200% 0; }
+}
+
+/* ── Error / Empty ── */
+.home__error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.home__error-icon {
+    font-size: 2.5rem;
+    color: var(--accent);
+}
+
+.home__error code {
+    background: var(--bg-card);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    color: var(--gold);
+}
+
+.home__no-results {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    padding: 3rem;
+    text-align: center;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+    .home__grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+    .home__hero {
+        min-height: 45vh;
+    }
+}
